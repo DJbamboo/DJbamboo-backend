@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DJbamboo</title>
+	{% load static %}
+	<!-- GOOGLE FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+	<!-- FONT-ICON -->
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/et-line-font/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/font-awesome/css/font-awesome.min.css' %}">
+	<!--<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/Icon-font-7-stroke-PIXEDEN/css/pe-icon-7-stroke.css' %}">-->
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/themify-icons/themify-icons.css' %}">
+
+	<!-- DEFAULT-LIB -->
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/animation/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/owl-carousel/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/Magnific-Popup/magnific-popup.css' %}">
+
+	<!-- PLUGIN-LIB -->
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/partical-effect/partical-animation.css' %}">
+
+	<!-- TEMPLATE -->
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/lib/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/css/nc-structure.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/css/nc-main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/css/nc-helper.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/css/nc-responsive.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'recommend/css/custom.css' %}">
+
+</head>
+<body>
+	
+	<!-- PAGE-LOADER -->
+	<div class="page-loader-wrapper page-loader-wrapper-1 flex-cc">
+		<div class="loader">
+			<div class="stick1"></div>
+			<div class="stick2"></div>
+			<div class="stick3"></div>
+			<div class="stick4"></div>
+		</div>
+	</div><!-- / PAGE-LOADER -->
+
+	<!-- MAIN-WRAPPER -->
+	<div id="main-wrapper" class="main-wrapper">
+		
+		<!-- BACKGROUND -->
+		<div class="bg-section bg-cover bg-cc" data-bgImage="{% static 'recommend/images/bg-25.jpg' %}">
+			<div class="overlay" style="background-color: rgba(0,0,0,0.35);"></div>
+		</div><!-- / BACKGROUND -->
+
+		<!-- [ RAIN ANIMATION ] -->
+		<div id="particles-js"></div>
+		<!-- [ RAIN ANIMATION END ] -->
+
+		<!-- HOME-WRAPPER -->
+		<div id="home-wrapper" class="flex-cc page-wrapper">
+			<div class="inner-wrapper">
+				<!-- HOME-PAGE -->
+				<div class="intro-section intro-section-2 animated s0-8" data-animOut="fadeOut" data-animIn="fadeIn">
+					<div class="container">
+						<!-- INTRO TEXT -->
+						<div class="intro-text">
+							<h1 class="main-text">DJ BAMBOO</h1>
+							<hr class="hr-1">
+							<p class="sub-text">노래를 들었을 때 마치 자신의 얘기 같았던 적이 있었나요?<br>대학교 대나무숲 사연을 기반으로 Word2Vec, LDA, 감성분석을 통해 사연에 어울리는 가사와 분위기를 분석해 노래를 추천해드립니다.</p>
+						</div><!-- / INTRO TEXT -->
+
+						<!-- SUBSCRIBE-FORM -->
+						<div class="subscribe-form subscribe-form-1" data-animOut="fadeOutUp" data-animIn="fadeInUp">
+							<div class="field-group">
+								<form action="/recommend/" method="post">
+									{% csrf_token %}
+									<textarea id="storyCont" name="myStory" class="form-control" type="text" placeholder="Enter your story" required style="min-height:200px;"></textarea>
+								</form>
+							</div>
+							<div class="msg-wrp"></div>
+						</div><!-- / SUBSCRIBE-FORM -->
+
+						<!-- NAVIGATION -->
+						<div class="navigation-wrp navigation-wrp-1">
+							<div class="inner-wrp">
+								<a id="btn" name="story" value=get_story() data-page="left" class="nav-link hvr-sweep-to-left">RECOMMEND</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- / HOME-PAGE -->
+			</div>
+		</div><!-- / HOME-WRAPPER -->
+		<!-- PAGE LEFT -->
+		<div id="page-left" class="pages scroll-bar">
+			<div class="outer-wrp">
+				
+				<!-- CLOSE -->
+				<div class="pg-close flex-cc">
+					<span id="close_btn" class="ti-close"></span>
+				</div><!-- / CLOSE -->
+
+				<!-- ABOUT-SECTION -->
+				<div class="sections about-section about-section-2">
+					<div class="container">
+						
+						<!-- TITLE -->
+						<div class="title-wrp">
+							<h5 class="title mini">STORY</h5>
+							<hr class="hr-1">
+						</div><!-- / TITLE -->
+
+						<!-- CONTENT -->
+						<div class="content-wrp">
+							<div class="row gt60">
+								<!-- <div class="col-md-7 l-part"> -->
+									<p id="output_story" class="large-text" data-animOut="fadeOutUp" data-animIn="fadeInUp">
+									</p>
+								<!-- </div> -->
+							</div>
+						</div><!-- / CONTENT -->
+					</div>
+					<div class="container">
+						
+						<!-- TITLE -->
+						<div class="title-wrp">
+							<br>
+							<h5 class="title mini">Music</h5>
+							<hr class="hr-1">
+							<!-- <h1 class="title"><b>DJ BAMBOO</b>가 추천하는 음악입니다</h1> -->
+							<p class="sub-title"><b>DJ BAMBOO</b>가 추천하는 음악입니다</p>
+						</div><!-- / TITLE -->
+	
+						<!-- CONTENT -->
+						<div class="content-wrp">
+							<div class="row gt0">
+								<div id="app">
+	
+								</div>
+							</div>
+						</div><!-- / CONTENT -->
+	
+					</div>
+				</div>
+				<!-- / ABOUT-SECTION -->
+			</div>
+		</div>
+		<!-- / PAGE LEFT -->
+	</div><!-- / MAIN-WRAPPER -->
+
+	<!-- DEFAULT-SCRIPT -->
+	<script src="{% static 'recommend/lib/jquery/jquery-1.11.3.min.js' %}"></script>
+	<script src="{% static 'recommend/lib/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'recommend/lib/jquery-validation/jquery.validate.min.js' %}"></script>
+
+	<!-- PLUGIN SCRIPT -->
+	<script src="{% static 'recommend/lib/partical-effect/particles.min.js' %}"></script>
+	<script src="{% static 'recommend/lib/partical-effect/partical-animation.js' %}"></script>
+	<script src="{% static 'recommend/js/plugins.js' %}"></script>
+
+	<!-- TEMPLATE SCRIPT -->
+	<script src="{% static 'recommend/js/nc-common.js' %}"></script>
+
+	<script>
+		String.prototype.format = function() {
+			var formatted = this;
+			for (var i = 0; i < arguments.length; i++) {
+				var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+				formatted = formatted.replace(regexp, arguments[i]);
+			}
+			return formatted;
+		};
+		var info_box = "<div class=\"col-md-4\"><div class=\"info-box info-box-1 odd\"><a href=\"{0}\" target=\"_blank\"><div class=\"info\"><h2 class=\"hd\">{1}</h2><hr class=\"hr-1\"><p class=\"sub-txt\">{2}</p></div></a></div></div>"
+        $('#btn').click( function() {
+			$("#output_story").text($('#storyCont').val());
+            $.ajax({
+                url:'/recommend/',
+                dataType:'json',
+                type:'POST',
+                data:{'story':$('#storyCont').val()},
+                success:function(result){
+					//console.log(result);
+					result = JSON.parse(result);
+					console.log(result)
+					app.songs = result.songs;
+					box = ''
+					result.songs.forEach(song=>{
+						box = box + info_box.format(song.url, song.title, song.artist)
+						//console.log(box)
+					});
+					$("#app").html(box)
+                }
+            });
+        })
+		$("#close_btn").click(function(){
+			$("#app").html('')
+		})
+        </script>
+</body>
+</html>
